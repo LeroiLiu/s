@@ -14,24 +14,24 @@ class Index extends BaseController
 
     public function initialize()
     {
-        if (!$this->isMobile()){
-            header('Location:http://www.baidu.com');
-            exit();
-        }
-        if ($this->isWeiXin()){
-            header('Location:http://www.baidu.com');
-            exit();
-        }
-        $array = array(
-            'www.theuccu.site','ewrejmr.theuccu.site','emr.theuccu.site',
-            'www.theuccu001.site','ewrejmr.theuccu001.site','emr.theuccu001.site',
-            'www.theuccu002.site','ewrejmr.theuccu002.site','emr.theuccu002.site',
-            'www.theuccu003.site','ewrejmr.theuccu003.site','emr.theuccu003.site');
-        $domain= $array[mt_rand(0,11)];
-        $host = explode('.',$_SERVER['HTTP_HOST']);
-        if ($host[0]!='has'){
-            header('Location:http://'."has.".$domain);exit();
-        }
+//        if (!$this->isMobile()){
+//            header('Location:http://www.baidu.com');
+//            exit();
+//        }
+//        if ($this->isWeiXin()){
+//            header('Location:http://www.baidu.com');
+//            exit();
+//        }
+//        $array = array(
+//            'www.theuccu.site','ewrejmr.theuccu.site','emr.theuccu.site',
+//            'www.theuccu001.site','ewrejmr.theuccu001.site','emr.theuccu001.site',
+//            'www.theuccu002.site','ewrejmr.theuccu002.site','emr.theuccu002.site',
+//            'www.theuccu003.site','ewrejmr.theuccu003.site','emr.theuccu003.site');
+//        $domain= $array[mt_rand(0,11)];
+//        $host = explode('.',$_SERVER['HTTP_HOST']);
+//        if ($host[0]!='has'){
+//            header('Location:http://'."has.".$domain);exit();
+//        }
     }
 
     public function isMobile()
