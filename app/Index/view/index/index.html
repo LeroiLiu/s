@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{$title}</title>
+    <meta name="viewport" content="width=100%; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <script src="__S__/js/j.1.10.2.js"></script>
+    <script type="text/javascript" src="__S__/js/swiper-3.4.0.jquery.min.js" ></script>
+    <link rel="stylesheet" href="__S__/css/swiper-3.2.7.min.css" />
+    <link rel="stylesheet" href="__SI__/css/jquery.hiSlider.min.css">
+    <link rel="stylesheet" type="text/css" href="__SI__/css/dmaku-demo.css" />
+    <link type="text/css" rel="stylesheet" href="__A__/css/zdialog.css" />
+    <style>
+        body {
+            min-width: 320px;
+            max-width: 640px;
+            margin: 0 auto;
+            color: #333;
+            padding: 0;
+            font-family: "Microsoft Yahei";
+            text-align: center;
+        }
+        .container {
+            /*width: 100%;*/
+            border: 1px solid #ccc;
+        }
+        .swiper1 {
+            width: 100%;
+        }
+        .swiper1 .selected {
+            color: #ec5566;
+            border-bottom: 2px solid #ec5566;
+        }
+        .swiper1 .swiper-slide {
+            text-align: center;
+            font-size: 16px;
+            height: 50px;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .swiper2 {
+            width: 100%;
+        }
+        .swiper2 .swiper-slide {
+            height: calc(100vh - 50px);
+            background-color: #ccc;
+            color: #fff;
+            text-align: center;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
+        }
+
+        input:focus{
+            border:none;
+        }
+        button:focus{
+            border:none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="swiper-container swiper1">
+        <div class="swiper-wrapper">
+            {volist name="tabs" id="tab"}
+            <div data-tab-id="{$tab.tab_id}" class="swiper-slide {if condition='$tab.tab_name==$keyword'}selected{/if}">{$tab.tab_name}</div>
+            {/volist}
+        </div>
+    </div>
+
+    <ul class="hiSlider topay">
+        {volist name="sliders" id="slider"}
+            <li style="height: 200px;" data-title="<?php echo mb_substr($slider['title'],0,20);?>" class="hiSlider-item"><img style="width: 100vw" src="{$slider.img}" alt="22222"></li>
+        {/volist}
+    </ul>
+
+    <div style="width: 90vw;margin: 0 auto;padding:10px;display: flex;flex-direction: row">
+        <input style="background:none;
+	            outline:none;
+	            border:none;
+	            height: 30px;
+	            width: 75vw;
+	            border-bottom-left-radius: 15px;
+	            border-top-left-radius: 15px;
+	            border: orange 1px solid;
+	            border-right: none;
+	            text-align: center;"
+                value="{$keyword}"
+                id="keyword"
+        />
+        <button style="
+                background:none;
+	            outline:none;
+	            border:none;
+	            width: 20vw;height: 32px;border-left: none;
+	            border-bottom-right-radius: 15px;
+	            border-top-right-radius: 15px;
+	            border: orange 1px solid;
+	            border-left: none;
+        " onclick="location.href = location.origin+'?keyword='+$('#keyword').val()">搜索</button>
+    </div>
+
+<!--    <img style="width:100%;text-align: center;" src='{$notice.img}' /><br/>-->
+    <ul style="display: flex;display: -webkit-flex;flex-direction: row;justify-content: space-between;align-items: center;flex-wrap: wrap;">
+        {volist name="videos" id="video"}
+        <li class="topay" style="width: 46vw;margin:1vw">
+            <img style="height: 75px;width: 46vw;margin-bottom: 5px;" src="{$video.img}" alt="{$video.title}">
+            <div style="height: 30px;width: 46vw;overflow: hidden;font-size: 10px;line-height: 15px;text-align: left">
+                {$video.title}
+            </div>
+        </li>
+        {/volist}
+    </ul>
+
+    <div style="text-align: center;line-height: 75px;font-size: 15px;position: fixed;bottom:250px;right: 20px;background:rgba(245,194,229,0.8);color: #FFF;border-radius: 35px;height: 70px;width: 70px" onclick="location = location">换一批</div>
+
+
+</div>
+
+
+<script src="__SI__/js/jquery.hiSlider.min.js"></script>
+<script type="text/javascript" src="__A__/js/zdialog.js"></script>
+<script>
+    $(function() {
+        function setCurrentSlide(ele, index) {
+            $(".swiper1 .swiper-slide").removeClass("selected");
+            ele.addClass("selected");
+        }
+
+        var swiper1 = new Swiper('.swiper1', {
+            slidesPerView: 5.5,
+            paginationClickable: true,
+            spaceBetween: 10,
+            freeMode: true,
+            loop: false,
+            onTab: function(swiper) {
+                var n = swiper1.clickedIndex;
+            }
+        });
+        swiper1.slides.each(function(index, val) {
+            var ele = $(this);
+            ele.on("click", function() {
+                setCurrentSlide(ele, index);
+                location.href = location.origin+"?keyword="+ele.text();
+            });
+        });
+    });
+
+
+
+    $('.hiSlider').hiSlider({
+        isShowControls:false,
+        isShowPage:false
+    });
+
+    //遮罩层确定框
+    $('.topay').click(function (e) {
+        let num = localStorage.getItem('pay');
+        let msg = "支付29元，获取全站资源";;
+        if (num%5>0){
+            msg = "抱歉，当前IP已被封禁，支付29元可解封IP并获取全站资源";
+        }
+        $.DialogByZ.Confirm({Title: "", Content: msg,FunL:confirmL,FunR:Immediate})
+    })
+    function confirmL(){
+        $.DialogByZ.Close();
+        location.href = '/index/index/pay'
+    }
+    function Immediate(){
+        $.DialogByZ.Close();
+    }
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

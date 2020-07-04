@@ -1,0 +1,36 @@
+﻿/****************************************************************
+ *																*		
+ * 						      代码库							*
+ *                        www.dmaku.com							*
+ *       		  努力创建完善、持续更新插件以及模板			*
+ * 																*
+****************************************************************/
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font: 14px/2 'Microsoft YaHei', 'Arial';background:#fff
+}
+li{
+	list-style: none;
+}
+li img{
+	display: block;
+	margin: 0 auto;
+}
+#wrap{
+	width: 80%;
+	min-width: 300px;
+	margin: 10px auto 80px;
+	background: #fefefe;
+}
+.hiSlider{
+	overflow: hidden;
+	height: 280px;
+	width: 500px;
+	background: #eee;
+}
+.hiSlider-item{
+	float: left;
+}
