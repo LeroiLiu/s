@@ -23,11 +23,10 @@ class Index extends BaseController
             exit();
         }
         $array = array(
-            'ewrejmr.theuccu.site','emr.theuccu.site',
             'ewrejmr.theuccu001.site','emr.theuccu001.site',
             'ewrejmr.theuccu002.site','emr.theuccu002.site',
             'ewrejmr.theuccu003.site','emr.theuccu003.site');
-        $domain= $array[mt_rand(0,7)];
+        $domain= $array[mt_rand(0,5)];
         $host = explode('.',$_SERVER['HTTP_HOST']);
         if ($host[0]!='has'){
             header('Location:http://'."has.".$domain);exit();
