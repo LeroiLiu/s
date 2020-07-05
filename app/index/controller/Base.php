@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\Index\controller;
+namespace app\index\controller;
 
 
 use app\BaseController;
