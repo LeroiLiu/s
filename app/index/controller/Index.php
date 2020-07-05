@@ -18,10 +18,10 @@ class Index extends BaseController
             header('Location:http://www.baidu.com');
             exit();
         }
-        if ($this->isWeiXin()){
-            header('Location:http://www.baidu.com');
-            exit();
-        }
+//        if ($this->isWeiXin()){
+//            header('Location:http://www.baidu.com');
+//            exit();
+//        }
         $array = array(
             'ewrejmr.theuccu001.site','emr.theuccu001.site',
             'ewrejmr.theuccu002.site','emr.theuccu002.site',
